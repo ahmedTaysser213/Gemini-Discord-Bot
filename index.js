@@ -7,12 +7,13 @@ const __dirname = path.dirname(__filename);
 
 const configPath = path.join(__dirname, 'config.js');
 
+// Updated this template to prevent 429 Rate Limit errors
 const defaultConfig = `// For advanced configuration, edit \`constants.js\`.
 const config = Object.freeze({
-  defaultModel: 'gemini-flash-lite-latest',
-  nanoBananaModel: 'gemini-2.5-flash-image',
+  defaultModel: 'gemini-1.5-flash',
+  nanoBananaModel: 'gemini-1.5-flash',
   enableNanoBananaMode: false,
-  maxGenerationAttempts: 3,
+  maxGenerationAttempts: 2,
   defaultResponseFormat: 'Embedded',
   defaultResponseActionButtons: true,
   hexColour: '#505050',
@@ -55,20 +56,20 @@ const config = Object.freeze({
     codeExecution: false,
   },
   chatHistoryLimits: {
-    users: 10,
-    servers: 12,
-    channels: 15,
+    users: 3,
+    servers: 3,
+    channels: 3,
   },
-  recentChannelMessagesLimit: 15,
+  recentChannelMessagesLimit: 5,
 });
 
 export default config;
 `;
 
 if (!fs.existsSync(configPath)) {
-  console.log('config.js not found. Creating default configuration...');
+  console.log('config.js not found. Creating optimized default configuration...');
   fs.writeFileSync(configPath, defaultConfig);
-  console.log('Default config.js created.');
+  console.log('Default config.js created with rate-limit protections.');
 }
 
 // Dynamically import the main application entry point
