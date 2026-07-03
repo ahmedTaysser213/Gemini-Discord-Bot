@@ -7,11 +7,11 @@ const __dirname = path.dirname(__filename);
 
 const configPath = path.join(__dirname, 'config.js');
 
-// Updated this template to prevent 429 Rate Limit errors
+// Updated to the correct 2.5 model to prevent 404 errors
 const defaultConfig = `// For advanced configuration, edit \`constants.js\`.
 const config = Object.freeze({
-  defaultModel: 'gemini-1.5-flash',
-  nanoBananaModel: 'gemini-1.5-flash',
+  defaultModel: 'gemini-2.5-flash',
+  nanoBananaModel: 'gemini-2.5-flash-image',
   enableNanoBananaMode: false,
   maxGenerationAttempts: 2,
   defaultResponseFormat: 'Embedded',
@@ -69,7 +69,7 @@ export default config;
 if (!fs.existsSync(configPath)) {
   console.log('config.js not found. Creating optimized default configuration...');
   fs.writeFileSync(configPath, defaultConfig);
-  console.log('Default config.js created with rate-limit protections.');
+  console.log('Default config.js created with gemini-2.5-flash.');
 }
 
 // Dynamically import the main application entry point
