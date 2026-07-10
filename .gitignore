@@ -1,7 +1,0 @@
-.env
-node_modules/
-package-lock.json
-data/
-temp/
-logs/
-config.js
