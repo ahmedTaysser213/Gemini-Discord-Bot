@@ -1,0 +1,2 @@
+[build]
+startCommand = "python bot.py"
